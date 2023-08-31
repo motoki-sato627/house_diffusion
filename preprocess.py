@@ -26,12 +26,8 @@ def reader(filename):
     fp_eds[:, 2:] -= shift
     tl -= shift
     br -= shift
-    eds_to_rms_tmp = []
 
-    for l in range(len(eds_to_rms)):
-        eds_to_rms_tmp.append([eds_to_rms[l][0]])
-
-    return rms_type, fp_eds, rms_bbs, eds_to_rms, eds_to_rms_tmp
+    return rms_type, fp_eds, rms_bbs, eds_to_rms
 
 base_dir = 'datasets/rplan'
 with open(f'{base_dir}/list.txt') as f:
@@ -42,8 +38,8 @@ length_edges = []
 subgraphs = []
 for line in lines:
     a = []
-    file_name = f'{base_dir}/{line[:-1]}'
-    rms_type, fp_eds, rms_bbs, eds_to_rms, eds_to_rms_tmp = reader(file_name)
+    with open(file_name) as f2:
+        rms_type, fp_eds, rms_bbs, eds_to_rms = reader(file_name)
 
     eds_to_rms_tmp = []
     for l in range(len(eds_to_rms)):
