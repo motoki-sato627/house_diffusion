@@ -60,7 +60,7 @@ for line in lines:
                 eds.append(l)
         b = []
         for eds_poly in [eds]:
-            length_edges.append((line, np.array([fp_eds[l][:4] for l in eds_poly])))
+            length_edges.append((file_name, np.array([fp_eds[l][:4] for l in eds_poly])))
 chk = [x.shape for x in np.array(length_edges)[:, 1]]
 idx = [i for i, x in enumerate(chk) if len(x) != 2]
 final = np.array(length_edges)[idx][:, 0].tolist()
