@@ -33,20 +33,17 @@ def reader(filename):
 
     return rms_type, fp_eds, rms_bbs, eds_to_rms, eds_to_rms_tmp
 
-
-file_list = glob('/home/akmal/APIIT/FYP Code/Housegan-data-reader/sample_out/*')
-# with open('file_list.txt','r') as f:
-#     lines = f.readlines()
-
-lines = file_list
+base_dir = 'datasets/rplan'
+with open(f'{base_dir}/list.txt') as f:
+     lines = f.readlines()
 
 out_size = 64
 length_edges = []
 subgraphs = []
 for line in lines:
     a = []
-    with open(line) as f2:
-        rms_type, fp_eds, rms_bbs, eds_to_rms, eds_to_rms_tmp = reader(line)
+    file_name = f'{base_dir}/{line[:-1]}'
+    rms_type, fp_eds, rms_bbs, eds_to_rms, eds_to_rms_tmp = reader(file_name)
 
     eds_to_rms_tmp = []
     for l in range(len(eds_to_rms)):
