@@ -38,6 +38,7 @@ length_edges = []
 subgraphs = []
 for line in lines:
     a = []
+    file_name = f'{base_dir}/{line[:-1]}'
     with open(file_name) as f2:
         rms_type, fp_eds, rms_bbs, eds_to_rms = reader(file_name)
 
