@@ -11,7 +11,7 @@ git clone https://github.com/motoki-sato627/house_diffusion.git
 cd house_diffusion
 pip install -r requirements.txt
 pip install -e .
-mkdir process_rpaln
+mkdir processed_rplan
 ```
 **2. Download the dataset and create the datasets directory**
 
