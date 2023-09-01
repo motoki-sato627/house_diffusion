@@ -13,7 +13,7 @@ def diffusion_defaults():
         analog_bit=False,
         learn_sigma=False,
         #diffusion_steps=1000,
-        diffusion_steps=10,
+        diffusion_steps=1,
         noise_schedule="cosine",
         timestep_respacing="",
         use_kl=False,
@@ -108,7 +108,7 @@ def create_model_and_diffusion(
 def create_gaussian_diffusion(
     *,
     #steps=1000,
-    steps=10,
+    steps=1,
     learn_sigma=False,
     sigma_small=False,
     noise_schedule="linear",
