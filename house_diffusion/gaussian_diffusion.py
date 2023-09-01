@@ -864,7 +864,7 @@ class GaussianDiffusion:
                 bin_target = bin_target * 256 #-> [0, 256]
                 bin_target = dec2bin(bin_target.permute([0,2,1]).round().int(), 8) 
                 bin_target = bin_target.reshape([target.shape[0], target.shape[2], 16]).permute([0,2,1])
-                t_weights = (t<10).cuda().unsqueeze(1).unsqueeze(2)
+                t_weights = (t<10).cpu().unsqueeze(1).unsqueeze(2)
                 t_weights = t_weights * (t_weights.shape[0]/max(1, t_weights.sum()))
                 bin_target[bin_target==0] = -1
                 assert model_output_bin.shape == bin_target.shape
