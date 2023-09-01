@@ -361,7 +361,8 @@ def create_argparser():
     defaults = dict(
         dataset='',
         clip_denoised=True,
-        num_samples=10000,
+        #num_samples=10000,
+        num_samples=10,
         batch_size=16,
         use_ddim=False,
         model_path="",
