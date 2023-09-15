@@ -11,7 +11,7 @@ Pillow==9.4.0
 pytorch_fid==0.3.0
 setuptools
 Shapely==1.8.4
-tensorflow==2.13.0
+tensorflow
 torch
 tqdm==4.61.2
 webcolors==1.12
