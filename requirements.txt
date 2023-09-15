@@ -9,7 +9,7 @@ numpy
 opencv_python==4.6.0.66
 Pillow==9.4.0
 pytorch_fid==0.3.0
-setuptools==57.5.0
+setuptools
 Shapely==1.8.4
 tensorflow==2.13.0
 torch
