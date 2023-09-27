@@ -41,7 +41,6 @@ def load_rplanhg_data(
     while True:
         step+=1
         print(step)
-        print(next(loader))
         yield from loader
 
 def make_non_manhattan(poly, polygon, house_poly):
