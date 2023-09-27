@@ -326,7 +326,7 @@ def main():
             sample_fn = (
                 diffusion.p_sample_loop if not args.use_ddim else diffusion.ddim_sample_loop
             )
-            data_sample, model_kwargs = next(data)
+            data_sample, model_kwargs = data
             for key in model_kwargs:
                 model_kwargs[key] = model_kwargs[key].cuda()
 
