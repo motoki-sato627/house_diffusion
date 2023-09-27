@@ -157,7 +157,7 @@ class TrainLoop:
             not self.lr_anneal_steps
             or self.step + self.resume_step < self.lr_anneal_steps
         ):
-            batch, cond = self.data
+            batch, cond = next(self.data)
             self.run_step(batch, cond)
             if self.step % 100000 == 0:
                 lr = self.lr * (0.1**(self.step//100000))
