@@ -320,6 +320,9 @@ class RPlanhgDataset(Dataset):
 
     def __getitem__(self, idx):
         # idx = int(idx//20)
+        print(idx)
+        print(self.houses[idx].shape)
+        print(self.houses[idx])
         arr = self.houses[idx][:, :self.num_coords]
         graph = np.concatenate((self.graphs[idx], np.zeros([200-len(self.graphs[idx]), 3])), 0)
 
