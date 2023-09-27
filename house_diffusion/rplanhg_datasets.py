@@ -120,6 +120,7 @@ class RPlanhgDataset(Dataset):
                 self.syn_self_masks = data['self_masks']
                 self.syn_gen_masks = data['gen_masks']
         else:
+            print(100)
             with open(f'{base_dir}/list.txt') as f:
                 lines = f.readlines()
             cnt=0
@@ -129,12 +130,14 @@ class RPlanhgDataset(Dataset):
                 rms_type, fp_eds,rms_bbs,eds_to_rms=reader(file_name) 
                 fp_size = len([x for x in rms_type if x != 15 and x != 17])
                 if self.set_name=='train' and fp_size == target_set:
+                        print(101)
                         continue
                 if self.set_name=='eval' and fp_size != target_set:
-                        print(100)
+                        print(102)
                         continue
                 a = [rms_type, rms_bbs, fp_eds, eds_to_rms]
                 self.subgraphs.append(a)
+            print(self.subgraphs)
             for graph in tqdm(self.subgraphs):
                 rms_type = graph[0]
                 rms_bbs = graph[1]
@@ -247,8 +250,11 @@ class RPlanhgDataset(Dataset):
 
             np.savez_compressed(f'processed_rplan/rplan_{set_name}_{target_set}', graphs=self.graphs, houses=self.houses,
                     door_masks=self.door_masks, self_masks=self.self_masks, gen_masks=self.gen_masks)
+            if set_name=='eval':
+                print("processed_rplan/rplan_eval_8.npz is created")
             if self.set_name=='train':
                 np.savez_compressed(f'processed_rplan/rplan_{set_name}_{target_set}_cndist', cnumber_dist=cnumber_dist)
+                print("processed_rplan/rplan_train_8_cndist.npz is created")
 
             if set_name=='eval':
                 houses = []
@@ -318,6 +324,7 @@ class RPlanhgDataset(Dataset):
                 self.syn_graphs = graphs
                 np.savez_compressed(f'processed_rplan/rplan_{set_name}_{target_set}_syn', graphs=self.syn_graphs, houses=self.syn_houses,
                         door_masks=self.syn_door_masks, self_masks=self.syn_self_masks, gen_masks=self.syn_gen_masks)
+                print("processed_rplan/rplan_eval_8_syn.npz is created")
 
     def __len__(self):
         return len(self.houses)
