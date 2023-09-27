@@ -37,7 +37,10 @@ def load_rplanhg_data(
         loader = DataLoader(
             dataset, batch_size=batch_size, shuffle=True, num_workers=2, drop_last=False
         )
+    step=0
     while True:
+        step+=1
+        print(step)
         yield from loader
 
 def make_non_manhattan(poly, polygon, house_poly):
