@@ -96,8 +96,12 @@ class RPlanhgDataset(Dataset):
         max_num_points = 100
         if self.set_name == 'eval':
             cnumber_dist = np.load(f'processed_rplan/rplan_train_{target_set}_cndist.npz', allow_pickle=True)['cnumber_dist'].item()
+            print(cnumber_dist.shape)
+            print(cnumber_dist)
         if os.path.exists(f'processed_rplan/rplan_{set_name}_{target_set}.npz'):
             data = np.load(f'processed_rplan/rplan_{set_name}_{target_set}.npz', allow_pickle=True)
+            print(data.shape)
+            print(data)
             self.graphs = data['graphs']
             self.houses = data['houses']
             self.door_masks = data['door_masks']
@@ -108,6 +112,8 @@ class RPlanhgDataset(Dataset):
             cnumber_dist = np.load(f'processed_rplan/rplan_train_{target_set}_cndist.npz', allow_pickle=True)['cnumber_dist'].item()
             if self.set_name == 'eval':
                 data = np.load(f'processed_rplan/rplan_{set_name}_{target_set}_syn.npz', allow_pickle=True)
+                print(data.shape)
+                print(data)
                 self.syn_graphs = data['graphs']
                 self.syn_houses = data['houses']
                 self.syn_door_masks = data['door_masks']
