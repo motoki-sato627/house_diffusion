@@ -29,6 +29,7 @@ def load_rplanhg_data(
     print(f"loading {set_name} of target set {target_set}")
     deterministic = False if set_name=='train' else True
     dataset = RPlanhgDataset(set_name, analog_bit, target_set)
+    return dataset(0)
     if deterministic:
         loader = DataLoader(
             dataset, batch_size=batch_size, shuffle=False, num_workers=2, drop_last=False
