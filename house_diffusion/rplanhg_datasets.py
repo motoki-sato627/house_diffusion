@@ -134,7 +134,7 @@ class RPlanhgDataset(Dataset):
                         continue
                 if self.set_name=='eval' and fp_size != target_set:
                         print(102)
-                        continue
+                        #continue
                 a = [rms_type, rms_bbs, fp_eds, eds_to_rms]
                 self.subgraphs.append(a)
             print(self.subgraphs)
